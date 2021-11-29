@@ -17,7 +17,7 @@ func main() {
 		bar := os.Getenv(foo)
 		log.Printf("/called with %s", bar)
 
-		_, err := fmt.Fprintf(rw, "Hello %s!", bar)
+		_, err := fmt.Fprintf(rw, "Hello, I love %s!", bar)
 		if err != nil {
 			rw.Write([]byte(err.Error()))
 		}
