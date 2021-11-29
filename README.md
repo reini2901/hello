@@ -2,4 +2,4 @@
 
 Sample App für Openshift
 
-Webhook added
+Webhook added/json
