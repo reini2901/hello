@@ -21,6 +21,14 @@ func main() {
 
 	})
 
+	http.HandleFunc("/liveness", func(rw http.ResponseWriter, r *http.Request) {
+		fmt.Println("liveness probe called")
+	})
+
+	http.HandleFunc("/readiness", func(rw http.ResponseWriter, r *http.Request) {
+		fmt.Println("readyness probe called")
+	})
+
 	fmt.Println("Starting app @", port)
 	if err := http.ListenAndServe(port, nil); err != nil {
 		panic(err)
