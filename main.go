@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"net/http"
 	"os"
 )
@@ -12,8 +13,9 @@ const foo = "foo"
 func main() {
 
 	http.HandleFunc("/", func(rw http.ResponseWriter, r *http.Request) {
-
+		
 		bar := os.Getenv(foo)
+		log.Printf("/called with %s", bar)
 
 		_, err := fmt.Fprintf(rw, "Hello %s!", bar)
 		if err != nil {
@@ -23,11 +25,11 @@ func main() {
 	})
 
 	http.HandleFunc("/liveness", func(rw http.ResponseWriter, r *http.Request) {
-		fmt.Println("liveness probe called")
+		log.Println("liveness probe called")
 	})
 
 	http.HandleFunc("/readiness", func(rw http.ResponseWriter, r *http.Request) {
-		fmt.Println("readyness probe called")
+		log.Println("readyness probe called")
 	})
 
 	fmt.Println("Starting app @", port)
