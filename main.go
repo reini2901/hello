@@ -7,12 +7,13 @@ import (
 )
 
 const port = ":8080"
+const foo = "foo"
 
 func main() {
 
 	http.HandleFunc("/", func(rw http.ResponseWriter, r *http.Request) {
 
-		bar := os.Getenv("foo")
+		bar := os.Getenv(foo)
 
 		_, err := fmt.Fprintf(rw, "Hello %s!", bar)
 		if err != nil {
