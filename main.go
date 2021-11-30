@@ -15,6 +15,9 @@ func main() {
 	http.HandleFunc("/", func(rw http.ResponseWriter, r *http.Request) {
 		
 		bar := os.Getenv(foo)
+		if bar == "" {
+			bar = "enter env FOO"
+		}
 		log.Printf("/called with %s", bar)
 
 		_, err := fmt.Fprintf(rw, "Hello, I love %s!", bar)
